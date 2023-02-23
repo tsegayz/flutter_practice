@@ -23,7 +23,13 @@ class _HomeState extends State<Home> {
     "Kids Song",
     "Favorites"
   ];
-  final List<double> size = <double>[0];
+  final List<double> size = <double>[
+    180.0,
+    180.0,
+    180.0,
+    180.0,
+    180.0,
+  ];
 
   int index = 0;
 

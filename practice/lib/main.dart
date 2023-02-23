@@ -8,22 +8,20 @@ import 'package:practice/search.dart';
 import 'package:practice/songs.dart';
 
 void main() {
-  runApp( MaterialApp(
+  runApp(MaterialApp(
     home: Enzemer(),
   ));
 }
 
 class Enzemer extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title:"Navigation",
+        title: "Navigation",
         initialRoute: "/",
         routes: {
-          '/': (context) => Lyrics(),
-          }
-      );
-    }
-} 
+          '/': (context) => Home(),
+        });
+  }
+}

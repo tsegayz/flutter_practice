@@ -9,7 +9,6 @@ import 'package:practice/songs.dart';
 
 void main() {
   runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
     home: Enzemer(),
   ));
 }
@@ -17,8 +16,12 @@ void main() {
 class Enzemer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: "Navigation", initialRoute: "/", routes: {
-      '/': (context) => Lyrics(),
-    });
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: "Navigation",
+        initialRoute: "/",
+        routes: {
+          '/': (context) => Songs(),
+        });
   }
 }

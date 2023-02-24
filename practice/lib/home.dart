@@ -185,57 +185,6 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //   children: [
-          //     Container(
-          //       width: 160,
-          //       height: 130,
-          //       decoration: BoxDecoration(
-          //           color: Colors.grey[300],
-          //           borderRadius: BorderRadius.circular(20.0)),
-          //       child: Column(
-          //         mainAxisAlignment: MainAxisAlignment.center,
-          //         children: [
-          //           Text(
-          //             "Agezege",
-          //             style: TextStyle(fontSize: 18),
-          //           ),
-          //           Padding(
-          //             padding: const EdgeInsets.only(left: 45.0, top: 10),
-          //             child: Text(
-          //               "Album 1",
-          //               style: TextStyle(fontSize: 14),
-          //             ),
-          //           ),
-          //         ],
-          //       ),
-          //     ),
-          //     Container(
-          //       width: 160,
-          //       height: 130,
-          //       decoration: BoxDecoration(
-          //           color: Colors.grey[300],
-          //           borderRadius: BorderRadius.circular(20.0)),
-          //       child: Column(
-          //         mainAxisAlignment: MainAxisAlignment.center,
-          //         children: [
-          //           Text(
-          //             "Yezelalem Fetari",
-          //             style: TextStyle(fontSize: 18),
-          //           ),
-          //           Padding(
-          //             padding: const EdgeInsets.only(left: 45.0, top: 10),
-          //             child: Text(
-          //               "Album 2",
-          //               style: TextStyle(fontSize: 14),
-          //             ),
-          //           ),
-          //         ],
-          //       ),
-          //     ),
-          //   ],
-          // ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

@@ -79,7 +79,7 @@ class _MenuState extends State<Menu> {
                 context.go('/newSongs');
                 break;
               case 2:
-                context.go('/allSongs');
+                context.go('/searchAll');
                 break;
               case 3:
                 context.go('/menu');

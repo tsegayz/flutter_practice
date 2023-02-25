@@ -32,7 +32,7 @@ class Enzemer extends StatelessWidget {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => SearchAll(),
+        builder: (context, state) => Home(),
       ),
       GoRoute(
         path: '/lyrics',
@@ -73,6 +73,10 @@ class Enzemer extends StatelessWidget {
       GoRoute(
         path: '/newSongs',
         builder: (context, state) => NewSongs(),
+      ),
+      GoRoute(
+        path: '/searchAll',
+        builder: (context, state) => SearchAll(),
       ),
     ],
   );

@@ -9,8 +9,6 @@ class SearchAll extends StatefulWidget {
 }
 
 class _SearchAllState extends State<SearchAll> {
-  int index = 0;
-
   int _selectedIndex = 2;
 
   @override
@@ -81,7 +79,7 @@ class _SearchAllState extends State<SearchAll> {
                 context.go('/newSongs');
                 break;
               case 2:
-                context.go('/allSongs');
+                context.go('/searchAll');
                 break;
               case 3:
                 context.go('/menu');

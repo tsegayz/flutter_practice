@@ -9,8 +9,6 @@ class NewSongs extends StatefulWidget {
 }
 
 class _NewSongsState extends State<NewSongs> {
-  int index = 0;
-
   int _selectedIndex = 1;
 
   @override
@@ -81,7 +79,7 @@ class _NewSongsState extends State<NewSongs> {
                 context.go('/newSongs');
                 break;
               case 2:
-                context.go('/allSongs');
+                context.go('/searchAll');
                 break;
               case 3:
                 context.go('/menu');

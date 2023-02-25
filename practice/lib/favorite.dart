@@ -37,7 +37,7 @@ class _FavoriteState extends State<Favorite> {
           // ignore: prefer_const_literals_to_create_immutables
           children: [
             GestureDetector(
-              onTap: () => context.go('/home'),
+              onTap: () => GoRouter.of(context).go('/home'),
               child: Icon(
                 Icons.arrow_back,
                 size: 25,
@@ -86,7 +86,7 @@ class _FavoriteState extends State<Favorite> {
                 scrollDirection: Axis.vertical,
                 itemBuilder: (context, index) {
                   return GestureDetector(
-                    onTap: () => context.go('/lyrics'),
+                    onTap: () => GoRouter.of(context).go('/lyrics'),
                     child: Stack(
                       children: [
                         Container(

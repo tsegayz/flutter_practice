@@ -156,16 +156,16 @@ class _MenuState extends State<Menu> {
           onTap: (index) {
             switch (index) {
               case 0:
-                context.go('/');
+                GoRouter.of(context).go('/');
                 break;
               case 1:
-                context.go('/newSongs');
+                GoRouter.of(context).go('/newSongs');
                 break;
               case 2:
-                context.go('/searchAll');
+                GoRouter.of(context).go('/searchAll');
                 break;
               case 3:
-                context.go('/menu');
+                GoRouter.of(context).go('/menu');
                 break;
             }
             _selectedIndex = index;

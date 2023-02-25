@@ -35,7 +35,7 @@ class _AlbumsState extends State<Albums> {
           // ignore: prefer_const_literals_to_create_immutables
           children: [
             GestureDetector(
-              onTap: () => context.go('/singers'),
+              onTap: () => GoRouter.of(context).go('/singers'),
               child: Icon(
                 Icons.arrow_back,
                 size: 25,
@@ -46,7 +46,7 @@ class _AlbumsState extends State<Albums> {
               width: 120,
             ),
             Text(
-              "Album",
+              "Albums",
               style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.w400,
@@ -103,37 +103,37 @@ class _AlbumsState extends State<Albums> {
           ),
           Expanded(
             flex: 4,
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.grey[100],
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(60),
-                      topRight: Radius.circular(60))),
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200,
-                  mainAxisSpacing: 6,
-                  crossAxisSpacing: 6,
-                  childAspectRatio: 1,
-                ),
-                itemCount: 15,
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(25.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(18.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: Offset(0, 3),
-                            )
-                          ]),
-                      child: GestureDetector(
-                        onTap: () => context.go('/songList'),
+            child: GestureDetector(
+              onTap: () => GoRouter.of(context).go('/songList'),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.grey[100],
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(60),
+                        topRight: Radius.circular(60))),
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 200,
+                    mainAxisSpacing: 6,
+                    crossAxisSpacing: 6,
+                    childAspectRatio: 1,
+                  ),
+                  itemCount: 15,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(25.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(18.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: Offset(0, 3),
+                              )
+                            ]),
                         child: Stack(
                           children: [
                             Center(
@@ -166,9 +166,9 @@ class _AlbumsState extends State<Albums> {
                           ],
                         ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
             ),
           )

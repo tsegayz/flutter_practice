@@ -27,7 +27,7 @@ class _LyricsState extends State<Lyrics> {
           // ignore: prefer_const_literals_to_create_immutables
           children: [
             GestureDetector(
-              onTap: () => context.go('/'),
+              onTap: () => context.go('/songList'),
               child: Icon(
                 Icons.arrow_back,
                 color: Colors.white,

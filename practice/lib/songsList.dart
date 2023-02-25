@@ -42,7 +42,7 @@ class _SongListState extends State<SongList> {
           // ignore: prefer_const_literals_to_create_immutables
           children: [
             GestureDetector(
-              onTap: () => context.go('/albums'),
+              onTap: () => GoRouter.of(context).go('/albums'),
               child: Icon(
                 Icons.arrow_back,
                 size: 25,
@@ -69,7 +69,7 @@ class _SongListState extends State<SongList> {
             scrollDirection: Axis.vertical,
             itemBuilder: (context, index) {
               return GestureDetector(
-                onTap: () => context.go('/lyrics'),
+                onTap: () => GoRouter.of(context).go('/lyrics'),
                 child: Column(
                   children: [
                     Stack(

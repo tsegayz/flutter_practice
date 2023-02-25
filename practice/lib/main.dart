@@ -10,6 +10,9 @@ import 'package:practice/singers.dart';
 import 'package:practice/kidsSong.dart';
 import 'package:practice/englishSong.dart';
 import 'package:practice/favorite.dart';
+import 'package:practice/menu.dart';
+import 'package:practice/newSongs.dart';
+import 'package:practice/searchAll.dart';
 
 import 'package:go_router/go_router.dart';
 
@@ -29,7 +32,7 @@ class Enzemer extends StatelessWidget {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => Home(),
+        builder: (context, state) => SearchAll(),
       ),
       GoRoute(
         path: '/lyrics',
@@ -65,7 +68,11 @@ class Enzemer extends StatelessWidget {
       ),
       GoRoute(
         path: '/menu',
-        builder: (context, state) => Albums(),
+        builder: (context, state) => Menu(),
+      ),
+      GoRoute(
+        path: '/newSongs',
+        builder: (context, state) => NewSongs(),
       ),
     ],
   );

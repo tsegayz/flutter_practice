@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, unnecessary_string_interpolations, avoid_unnecessary_containers, sized_box_for_whitespace, non_constant_identifier_names
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, unnecessary_string_interpolations, avoid_unnecessary_containers, sized_box_for_whitespace, non_constant_identifier_names, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -25,10 +25,93 @@ class _MenuState extends State<Menu> {
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        // ignore: prefer_const_literals_to_create_immutables
-        children: [],
+      body: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 15),
+              child: Text(
+                "Connect with us",
+                style: TextStyle(color: Colors.red, fontSize: 18),
+              ),
+            ),
+            Row(
+              children: [
+                Icon(Icons.library_music_rounded),
+                SizedBox(
+                  width: 15,
+                ),
+                Text("Send us lyrics")
+              ],
+            ),
+            SizedBox(
+              height: 28,
+            ),
+            Row(
+              children: [
+                Icon(Icons.feedback_rounded),
+                SizedBox(
+                  width: 15,
+                ),
+                Text("Feedback")
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 35, bottom: 15),
+              child: Text(
+                "Policies",
+                style: TextStyle(color: Colors.red, fontSize: 18),
+              ),
+            ),
+            Row(
+              children: [
+                Icon(Icons.privacy_tip),
+                SizedBox(
+                  width: 15,
+                ),
+                Text("Privacy policy")
+              ],
+            ),
+            SizedBox(
+              height: 28,
+            ),
+            Row(
+              children: [
+                Icon(Icons.info_outline),
+                SizedBox(
+                  width: 15,
+                ),
+                Text("About")
+              ],
+            ),
+            SizedBox(
+              height: 28,
+            ),
+            Row(
+              children: [
+                Icon(Icons.share),
+                SizedBox(
+                  width: 15,
+                ),
+                Text("Share app")
+              ],
+            ),
+            SizedBox(
+              height: 28,
+            ),
+            Row(
+              children: [
+                Icon(Icons.star_border_outlined),
+                SizedBox(
+                  width: 15,
+                ),
+                Text("Rate and preview")
+              ],
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
           elevation: 0.0,

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'songsModel.dart';
 
 class SearchAll extends StatefulWidget {
   @override
@@ -9,26 +10,308 @@ class SearchAll extends StatefulWidget {
 }
 
 class _SearchAllState extends State<SearchAll> {
-  int _selectedIndex = 2;
+  int index = 0;
+  int _index = 0;
 
+  static List<SongsModel> items = [
+    SongsModel(
+      "Hana Tekle",
+      "Agezege ",
+    ),
+    SongsModel(
+      "Endale W/georigis",
+      "Mematsega ",
+    ),
+    SongsModel(
+      "Dawit",
+      "Oh nefse ",
+    ),
+  ];
+
+  static List<SongsModel> items2 = [
+    SongsModel(
+      "Thy word",
+      "Amy Grant ",
+    ),
+    SongsModel(
+      "promises",
+      "Trible ",
+    ),
+    SongsModel(
+      "Agradecdo",
+      "Danny Gokey ",
+    ),
+  ];
+  get_icons(int index) {
+    return index % 2 == 0 ? Icons.favorite_border : Icons.favorite;
+  }
+
+  final PageController _pageController = PageController(initialPage: 0);
+  int _selectedIndex = 2;
+  // final PageController controller = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey[400],
+        backgroundColor: Colors.grey[200],
         elevation: 0.0,
-        title: Center(
-          child: Text(
-            "Amharic and English",
-            style: TextStyle(
-                fontSize: 25, fontWeight: FontWeight.w400, color: Colors.black),
-          ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            TextButton(
+              onPressed: () {
+                _pageController.animateToPage(
+                  0,
+                  duration: Duration(milliseconds: 500),
+                  curve: Curves.ease,
+                );
+                setState(() {
+                  _selectedIndex = 0;
+                });
+              },
+              child: Container(
+                width: 140,
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color:
+                          _selectedIndex == 0 ? Colors.red : Colors.transparent,
+                      width: 3.0,
+                    ),
+                  ),
+                ),
+                child: Center(
+                  child: Text(
+                    'Amharic',
+                    style: TextStyle(
+                        fontSize: 25.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400),
+                  ),
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                _pageController.animateToPage(
+                  1,
+                  duration: Duration(milliseconds: 500),
+                  curve: Curves.ease,
+                );
+                setState(() {
+                  _selectedIndex = 1;
+                });
+              },
+              child: Container(
+                width: 140,
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color:
+                          _selectedIndex == 1 ? Colors.red : Colors.transparent,
+                      width: 3.0,
+                    ),
+                  ),
+                ),
+                child: Center(
+                  child: Text(
+                    'English',
+                    style: TextStyle(
+                        fontSize: 25.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        // ignore: prefer_const_literals_to_create_immutables
-        children: [],
+      body: PageView(
+        controller: _pageController,
+        children: <Widget>[
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            // ignore: prefer_const_literals_to_create_immutables
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10.0, 10, 10, 20),
+                child: TextField(
+                  decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(100.0),
+                      ),
+                      constraints:
+                          BoxConstraints.tightFor(width: 400, height: 50),
+                      hintText: "Search Song by name or artist",
+                      prefixIcon: Icon(
+                        Icons.search,
+                        size: 24,
+                      )),
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              Expanded(
+                flex: 5,
+                child: ListView.builder(
+                    itemCount: items.length,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () => context.go('/lyrics'),
+                        child: Stack(
+                          children: [
+                            Container(
+                              width: 400,
+                              height: 65,
+                              decoration: BoxDecoration(
+                                  // color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(13.0)),
+                            ),
+                            Positioned(
+                              top: 46,
+                              child: Container(
+                                width: 4000,
+                                height: 1,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[300],
+                                  borderRadius: BorderRadius.circular(15.0),
+                                ),
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  // ignore: prefer_const_literals_to_create_immutables
+                                  children: [
+                                    Text(
+                                      items[index].song,
+                                      style: TextStyle(
+                                          fontSize: 18, color: Colors.black),
+                                    ),
+                                    Text(items[index].artist,
+                                        style: TextStyle(
+                                            fontSize: 14, color: Colors.black))
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: 200,
+                                ),
+                                InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        _index++;
+                                      });
+                                    },
+                                    child: Icon(get_icons(_index),
+                                        color: Colors.grey)),
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
+              ),
+            ],
+          ),
+          Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10.0, 10, 10, 20),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(100.0),
+                        ),
+                        constraints:
+                            BoxConstraints.tightFor(width: 400, height: 50),
+                        hintText: "Search Song by name or artist",
+                        prefixIcon: Icon(
+                          Icons.search,
+                          size: 24,
+                        )),
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+                Expanded(
+                  flex: 5,
+                  child: ListView.builder(
+                      itemCount: items.length,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () => context.go('/lyrics'),
+                          child: Stack(
+                            children: [
+                              Container(
+                                width: 400,
+                                height: 65,
+                                decoration: BoxDecoration(
+                                    // color: Colors.grey[200],
+                                    borderRadius: BorderRadius.circular(13.0)),
+                              ),
+                              Positioned(
+                                top: 46,
+                                child: Container(
+                                  width: 4000,
+                                  height: 1,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey[300],
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    // ignore: prefer_const_literals_to_create_immutables
+                                    children: [
+                                      Text(
+                                        items2[index].song,
+                                        style: TextStyle(
+                                            fontSize: 18, color: Colors.black),
+                                      ),
+                                      Text(items2[index].artist,
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.black))
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    width: 200,
+                                  ),
+                                  InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          _index++;
+                                        });
+                                      },
+                                      child: Icon(get_icons(_index),
+                                          color: Colors.grey)),
+                                ],
+                              ),
+                            ],
+                          ),
+                        );
+                      }),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
           elevation: 0.0,

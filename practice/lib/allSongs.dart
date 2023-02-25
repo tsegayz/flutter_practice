@@ -23,17 +23,10 @@ class _AllSongsState extends State<AllSongs> {
       "Mematsega ",
     ),
     SongsModel(
-      "Dawit Getachew",
+      "Dawit",
       "Oh nefse ",
     ),
   ];
-
-  int _selectedIndex = 0;
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   get_icons(int index) {
     return index % 2 == 0 ? Icons.favorite_border : Icons.favorite;
@@ -155,48 +148,6 @@ class _AllSongsState extends State<AllSongs> {
                 }),
           ),
         ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        elevation: 0.0,
-        // ignore: prefer_const_literals_to_create_immutables
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              size: 25,
-              color: Color.fromARGB(255, 0, 27, 50),
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-              size: 25,
-              color: Color.fromARGB(255, 0, 27, 50),
-            ),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.menu,
-              size: 25,
-              color: Color.fromARGB(255, 0, 27, 50),
-            ),
-            label: 'Menu',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.settings,
-              size: 25,
-              color: Color.fromARGB(255, 0, 27, 50),
-            ),
-            label: 'Settings',
-            // backgroundColor: Colors.pink,
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromARGB(255, 0, 27, 50),
-        onTap: _onItemTapped,
       ),
     );
   }

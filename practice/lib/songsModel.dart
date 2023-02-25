@@ -1,4 +1,4 @@
-import 'package:practice/songs.dart';
+// ignore_for_file: file_names
 
 class SongsModel {
   String artist;

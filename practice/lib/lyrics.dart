@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Lyrics extends StatefulWidget {
   const Lyrics({Key? key}) : super(key: key);
@@ -25,10 +26,13 @@ class _LyricsState extends State<Lyrics> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           // ignore: prefer_const_literals_to_create_immutables
           children: [
-            Icon(
-              Icons.arrow_back,
-              color: Colors.grey,
-              size: 28,
+            GestureDetector(
+              onTap: () => context.go('/'),
+              child: Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+                size: 28,
+              ),
             ),
             Text('Enzemer',
                 style: TextStyle(

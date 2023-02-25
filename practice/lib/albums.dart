@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'card.dart';
 
@@ -27,13 +28,40 @@ class _AlbumsState extends State<Albums> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        elevation: 0.0,
+        title: Row(
+          // ignore: prefer_const_literals_to_create_immutables
+          children: [
+            GestureDetector(
+              onTap: () => context.go('/singers'),
+              child: Icon(
+                Icons.arrow_back,
+                size: 25,
+                color: Colors.white,
+              ),
+            ),
+            SizedBox(
+              width: 120,
+            ),
+            Text(
+              "Album",
+              style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white),
+            ),
+          ],
+        ),
+      ),
       body: Column(
         // ignore: prefer_const_literals_to_create_immutables
         children: [
           Expanded(
             flex: 1,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(30, 60, 30, 40),
+              padding: const EdgeInsets.fromLTRB(30, 20, 30, 40),
               child: Container(
                 height: 36,
                 width: 400,
@@ -74,7 +102,7 @@ class _AlbumsState extends State<Albums> {
             ),
           ),
           Expanded(
-            flex: 3,
+            flex: 4,
             child: Container(
               decoration: BoxDecoration(
                   color: Colors.grey[100],
@@ -95,7 +123,7 @@ class _AlbumsState extends State<Albums> {
                     child: Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(20.0),
+                          borderRadius: BorderRadius.circular(18.0),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.5),
@@ -104,35 +132,39 @@ class _AlbumsState extends State<Albums> {
                               offset: Offset(0, 3),
                             )
                           ]),
-                      child: Stack(
-                        children: [
-                          Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              // ignore: prefer_const_literals_to_create_immutables
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 70.0),
-                                  child: Text(
-                                    itemPack[index % 6].year,
-                                    style: TextStyle(fontSize: 12),
+                      child: GestureDetector(
+                        onTap: () => context.go('/songList'),
+                        child: Stack(
+                          children: [
+                            Center(
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                // ignore: prefer_const_literals_to_create_immutables
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 70.0),
+                                    child: Text(
+                                      itemPack[index % 6].year,
+                                      style: TextStyle(fontSize: 12),
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  itemPack[index % 6].title,
-                                  style: TextStyle(fontSize: 18),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 70.0),
-                                  child: Text(
-                                    itemPack[index % 6].album,
-                                    style: TextStyle(fontSize: 12),
+                                  Text(
+                                    itemPack[index % 6].title,
+                                    style: TextStyle(fontSize: 18),
                                   ),
-                                ),
-                              ],
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 70.0),
+                                    child: Text(
+                                      itemPack[index % 6].album,
+                                      style: TextStyle(fontSize: 12),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   );

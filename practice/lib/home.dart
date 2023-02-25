@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'card.dart';
 
 class Home extends StatefulWidget {
@@ -23,12 +24,20 @@ class _HomeState extends State<Home> {
     "Kids Song",
     "Favorites"
   ];
-  final List<double> size = <double>[
+  static List<double> size = <double>[
+    204.0,
+    185.0,
+    155.0,
     180.0,
-    180.0,
-    180.0,
-    180.0,
-    180.0,
+    187.0,
+  ];
+
+  final List<IconData> icons = [
+    Icons.mic,
+    Icons.music_note,
+    Icons.music_note,
+    Icons.music_note,
+    Icons.favorite,
   ];
 
   int index = 0;
@@ -75,7 +84,7 @@ class _HomeState extends State<Home> {
                               width: 40,
                             ),
                             Icon(
-                              Icons.music_note,
+                              icons[index],
                               size: 25,
                               color: Colors.red,
                             ),
@@ -96,6 +105,9 @@ class _HomeState extends State<Home> {
                                 fontSize: 20,
                                 color: Color.fromARGB(255, 0, 0, 0),
                               ),
+                            ),
+                            SizedBox(
+                              width: size[index],
                             ),
                             Icon(
                               Icons.keyboard_arrow_right_outlined,
@@ -136,48 +148,52 @@ class _HomeState extends State<Home> {
                 ),
                 itemCount: 6,
                 itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(25.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: Offset(0, 3),
-                            )
-                          ]),
-                      child: Stack(
-                        children: [
-                          Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 70.0),
-                                  child: Text(
-                                    itemPack[index % 3].year,
-                                    style: TextStyle(fontSize: 12),
+                  return GestureDetector(
+                    onTap: () => context.go('/lyrics'),
+                    child: Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: Offset(0, 3),
+                              )
+                            ]),
+                        child: Stack(
+                          children: [
+                            Center(
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 70.0),
+                                    child: Text(
+                                      itemPack[index % 3].year,
+                                      style: TextStyle(fontSize: 12),
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  itemPack[index % 3].title,
-                                  style: TextStyle(fontSize: 18),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 70.0),
-                                  child: Text(
-                                    itemPack[index % 3].album,
-                                    style: TextStyle(fontSize: 12),
+                                  Text(
+                                    itemPack[index % 3].title,
+                                    style: TextStyle(fontSize: 18),
                                   ),
-                                ),
-                              ],
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 70.0),
+                                    child: Text(
+                                      itemPack[index % 3].album,
+                                      style: TextStyle(fontSize: 12),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   );

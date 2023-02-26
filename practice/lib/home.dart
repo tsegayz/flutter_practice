@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'card.dart';
+import 'package:practice/main.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -35,6 +36,13 @@ class _HomeState extends State<Home> {
     Icons.favorite,
   ];
 
+  final List<String> paths = [
+    '/singers',
+    '/allSongs',
+    '/englishsongs',
+    '/kidsSong',
+    '/favorite',
+  ];
   // int index = 0;
 
   static List<CardModel> itemPack = [
@@ -65,53 +73,56 @@ class _HomeState extends State<Home> {
                 itemCount: items.length,
                 // ignore: sized_box_for_whitespace
                 itemBuilder: (context, index) {
-                  return Container(
-                    color: Colors.grey[100],
-                    height: 60,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 40,
-                            ),
-                            Icon(
-                              icons[index],
-                              size: 25,
-                              color: Colors.red,
-                            ),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Container(
-                              color: Colors.black,
-                              width: 1.1,
-                              height: 30,
-                            ),
-                            SizedBox(
-                              width: 15,
-                            ),
-                            Text(
-                              items[index],
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Color.fromARGB(255, 0, 0, 0),
+                  return GestureDetector(
+                    onTap: () => GoRouter.of(context).go(paths[index]),
+                    child: Container(
+                      color: Colors.grey[100],
+                      height: 60,
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 40,
                               ),
-                            ),
-                            SizedBox(
-                              width: size[index],
-                            ),
-                            Icon(
-                              Icons.keyboard_arrow_right_outlined,
-                              size: 25,
-                              color: Colors.red,
-                            ),
-                          ],
-                        ),
-                      ],
+                              Icon(
+                                icons[index],
+                                size: 25,
+                                color: Colors.red,
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Container(
+                                color: Colors.black,
+                                width: 1.1,
+                                height: 30,
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Text(
+                                items[index],
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                              ),
+                              SizedBox(
+                                width: size[index],
+                              ),
+                              Icon(
+                                Icons.keyboard_arrow_right_outlined,
+                                size: 25,
+                                color: Colors.red,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 }),

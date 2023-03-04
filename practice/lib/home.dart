@@ -20,13 +20,13 @@ class _HomeState extends State<Home> {
     "Kids Song",
     "Favorites"
   ];
-  static List<double> size = <double>[
-    204.0,
-    185.0,
-    155.0,
-    180.0,
-    187.0,
-  ];
+  // static List<double> size = <double>[
+  //   204.0,
+  //   185.0,
+  //   155.0,
+  //   180.0,
+  //   187.0,
+  // ];
 
   final List<IconData> icons = [
     Icons.mic,
@@ -104,20 +104,22 @@ class _HomeState extends State<Home> {
                               SizedBox(
                                 width: 15,
                               ),
-                              Text(
-                                items[index],
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Color.fromARGB(255, 0, 0, 0),
+                              Expanded(
+                                child: Text(
+                                  items[index],
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: Color.fromARGB(255, 0, 0, 0),
+                                  ),
                                 ),
                               ),
-                              SizedBox(
-                                width: size[index],
-                              ),
-                              Icon(
-                                Icons.keyboard_arrow_right_outlined,
-                                size: 25,
-                                color: Colors.red,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 45.0),
+                                child: Icon(
+                                  Icons.keyboard_arrow_right_outlined,
+                                  size: 25,
+                                  color: Colors.red,
+                                ),
                               ),
                             ],
                           ),

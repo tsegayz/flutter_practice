@@ -35,7 +35,7 @@ class _AlbumsState extends State<Albums> {
           // ignore: prefer_const_literals_to_create_immutables
           children: [
             GestureDetector(
-              onTap: () => GoRouter.of(context).go('/singers'),
+              onTap: () => GoRouter.of(context).pop(),
               child: Icon(
                 Icons.arrow_back,
                 size: 25,

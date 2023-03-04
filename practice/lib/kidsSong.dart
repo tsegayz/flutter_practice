@@ -36,7 +36,7 @@ class _KidsSongState extends State<KidsSong> {
           // ignore: prefer_const_literals_to_create_immutables
           children: [
             GestureDetector(
-              onTap: () => GoRouter.of(context).go('/home'),
+              onTap: () => GoRouter.of(context).go('/'),
               child: Icon(
                 Icons.arrow_back,
                 size: 25,
